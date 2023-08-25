@@ -1,5 +1,5 @@
-import { Card, CardHeader, CardBody, CardFooter, Typography, Button } from "@material-tailwind/react";
 import { useState } from "react"
+import { Card, CardFooter, Image, Button } from "@nextui-org/react";
 
 export const ProductCard = ({ image, title, description, price, handleAgregar, handleQuitar }) => {
 
@@ -15,31 +15,61 @@ export const ProductCard = ({ image, title, description, price, handleAgregar, h
   }
 
   return (
-    <Card className="mt-6 w-96">
-      <CardHeader color="blue-gray" className="relative h-56">
-        <img
-          src={image}
+    <Card
+      isFooterBlurred
+      radius="lg"
+      className="border-none"
+    >
+      <div className="px-2 flex justify-around">
+        <div className="flex flex-col justify-center">
+          <p className="text-tiny text-black/80 text-sm">${price}</p>
+        </div>
+        <Image
           alt={title}
+          className="object-cover"
+          height={200}
+          src={image}
+          width={200}
         />
-      </CardHeader>
-      <CardBody>
-        <Typography variant="h5" color="blue-gray" className="mb-2">
-          {title}
-        </Typography>
-        <Typography variant="h6" color="blue-gray" className="mb-2">
-          {price}
-        </Typography>
-        <Typography>
-          {description}
-        </Typography>
-      </CardBody>
-      <CardFooter className="pt-0">
+      </div>
+      <CardFooter className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
+        <p className="text-tiny text-black/80 text-sm">{title}</p>
         {added
-          ? <Button onClick={removeProduct} color="amber" >Quitar</Button>
-          : <Button onClick={addProduct} color="blue">Agregar</Button>
+          ? <Button className="text-tiny text-white bg-black/20" onClick={removeProduct} variant="flat" color="default" radius="lg" size="sm">
+            Quitar
+          </Button>
+          : <Button className="text-tiny text-white bg-black/20" onClick={addProduct} variant="flat" color="default" radius="lg" size="sm">
+            Agregar
+          </Button>
         }
       </CardFooter>
     </Card>
+
+    // <Card className="mt-6 w-96">
+    //   <CardHeader color="blue-gray" className="relative h-56">
+    //     <img
+    //       src={image}
+    //       alt={title}
+    //     />
+    //   </CardHeader>
+    //   <CardBody>
+    //     <Typography variant="h5" color="blue-gray" className="mb-2">
+    //       {title}
+    //     </Typography>
+    //     <Typography variant="h6" color="blue-gray" className="mb-2">
+    //       {price}
+    //     </Typography>
+    //     <Typography>
+    //       {description}
+    //     </Typography>
+    //   </CardBody>
+    //   <CardFooter className="pt-0">
+    //     {added
+    //       ? <Button onClick={removeProduct} color="amber" >Quitar</Button>
+    //       : <Button onClick={addProduct} color="blue">Agregar</Button>
+    //     }
+    //   </CardFooter>
+    // </Card>
 
   )
 }

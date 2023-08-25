@@ -4,14 +4,14 @@ import { Compras } from "./pages/Compras"
 import { Carrito } from "./pages/Carrito"
 import { ProductosProvider } from "./context/ProductosProvider"
 import { CarritoProvider } from "./context/CarritoProvider"
-import { ThemeProvider } from "@material-tailwind/react";
+import { NextUIProvider } from "@nextui-org/react";
 
 
 export const CarritoApp = () => {
     return (
         <ProductosProvider>
             <CarritoProvider>
-                <ThemeProvider>
+                <NextUIProvider>
                     <NavbarApp />
                     <div className="container">
                         <Routes>
@@ -20,7 +20,7 @@ export const CarritoApp = () => {
                             <Route path="/*" element={<Navigate to='/' />} />
                         </Routes>
                     </div>
-                </ThemeProvider>
+                </NextUIProvider>
             </CarritoProvider>
         </ProductosProvider>
     )

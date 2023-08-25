@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { CarritoContext } from '../context/CarritoContext';
-import { Card, Typography, Button, IconButton } from "@material-tailwind/react";
+import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Button, Tooltip } from "@nextui-org/react";
+
 
 export const Carrito = () => {
 
@@ -12,89 +13,61 @@ export const Carrito = () => {
 
   return (
     <>
-
-      <Card className="h-full w-full">
-        <table className="w-full min-w-max table-auto text-left">
-          <thead>
-            <tr>
-              <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
-                <Typography variant="small" color="blue-gray" className="font-normal leading-none opacity-70">
-                  Producto
-                </Typography>
-              </th>
-              <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
-                <Typography variant="small" color="blue-gray" className="font-normal leading-none opacity-70">
-                  Precio
-                </Typography>
-              </th>
-              <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
-                <Typography variant="small" color="blue-gray" className="font-normal leading-none opacity-70">
-                  Cantidad
-                </Typography>
-              </th>
-              <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
-                <Typography variant="small" color="blue-gray" className="font-normal leading-none opacity-70">
-                  Eliminar
-                </Typography>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {listaCompras.map((producto) => (
-              <tr
-                key={producto.id}
-              >
-                <td className="p-4 border-b border-blue-gray-50">
-                  <Typography variant="small" color="blue-gray" className="font-normal">
-                    {producto.title}
-                  </Typography>
-                </td>
-                <td className="p-4 border-b border-blue-gray-50">
-                  <Typography variant="small" color="blue-gray" className="font-normal">
-                    {producto.price}
-                  </Typography>
-                </td>
-                <td className="p-4 border-b border-blue-gray-50">
-                  <IconButton variant="text" onClick={() => disminuirCantidad(producto.id)}><i class="fa-solid fa-minus"></i></IconButton>
-                  {producto.cantidad}
-                  <IconButton variant="text" onClick={() => aumentarCantidad(producto.id)}><i class="fa-solid fa-plus"></i></IconButton>
-                </td>
-                <td className="p-4 border-b border-blue-gray-50">
-                  <IconButton
-                    variant="text"
-                    onClick={() => eliminarCompra(producto.id)}
-                  >
-                    A
-                  </IconButton>
-                </td>
-              </tr>
-            ))}
-              <tr key={'a1500'}>
-                <td className="p-4 border-b border-blue-gray-50">
-                  <Typography variant="small" color="blue-gray" className="font-bold">
-                    Total
-                  </Typography>
-                </td>
-                <td className="p-4 border-b border-blue-gray-50">
-                  <Typography variant="small" color="blue-gray" className="font-normal">
-                    ${calcTotal()}
-                  </Typography>
-                </td>
-                <td className="p-4 border-b border-blue-gray-50">
-                  <Typography variant="small" color="blue-gray" className="font-normal">
-                  </Typography>
-                </td>
-                <td className="p-4 border-b border-blue-gray-50">
-                  <Typography variant="small" color="blue-gray" className="font-normal">
-                  </Typography>
-                </td>
-              </tr>
-          </tbody>
-        </table>
-      </Card>
+      <Table className="w-full min-w-max table-auto text-left">
+        <TableHeader>
+          <TableColumn>
+            Producto
+          </TableColumn>
+          <TableColumn>
+            Precio
+          </TableColumn>
+          <TableColumn>
+            Cantidad
+          </TableColumn>
+          <TableColumn>
+            Eliminar
+          </TableColumn>
+        </TableHeader>
+        <TableBody>
+          {listaCompras.map((producto) => (
+            <TableRow key={producto.id}>
+              <TableCell>
+                {producto.title}
+              </TableCell>
+              <TableCell>
+                {producto.price}
+              </TableCell>
+              <TableCell>
+                <Button color='default' size='sm' radius="full" onClick={() => disminuirCantidad(producto.id)}><i className="fa-solid fa-minus"></i></Button>
+                <span className='px-2'>{producto.cantidad}</span>
+                <Button color='default' size='sm' radius="full" onClick={() => aumentarCantidad(producto.id)}><i className="fa-solid fa-plus"></i></Button>
+              </TableCell>
+              <TableCell>
+                <Button onClick={() => eliminarCompra(producto.id)} color="warning" size='sm' aria-label="Like">
+                  <Tooltip color="default" content="Eliminar del carrito">
+                    <i className="fa-solid fa-trash"></i>
+                  </Tooltip>
+                </Button>
+              </TableCell>
+            </TableRow>
+          ))}
+          <TableRow key={'a1500'}>
+            <TableCell className="p-4 border-b border-blue-gray-50">
+              Total
+            </TableCell>
+            <TableCell className="p-4 border-b border-blue-gray-50">
+              ${calcTotal()}
+            </TableCell>
+            <TableCell className="p-4 border-b border-blue-gray-50">
+            </TableCell>
+            <TableCell className="p-4 border-b border-blue-gray-50">
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
 
       <div className='py-5 float-right'>
-        <Button variant="contained" disabled={listaCompras.length < 1} color="primary">Comprar</Button>
+        <Button disabled={listaCompras.length < 1} color="primary">Comprar</Button>
       </div>
     </>
   )
