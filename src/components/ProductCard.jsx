@@ -1,7 +1,7 @@
-import { Card, CardActionArea, CardActions, CardMedia, CardContent, Typography, Button } from "@mui/material"
+import { Card, CardHeader, CardBody, CardFooter, Typography, Button } from "@material-tailwind/react";
 import { useState } from "react"
 
-export const ProductCard = ({ image, title, description, price, handleAgregar, handleQuitar, handleAumentar, handleDisminuir}) => {
+export const ProductCard = ({ image, title, description, price, handleAgregar, handleQuitar }) => {
 
   const [added, setAdded] = useState(false)
 
@@ -10,37 +10,36 @@ export const ProductCard = ({ image, title, description, price, handleAgregar, h
     setAdded(true)
   }
   const removeProduct = () => {
-    handleQuitar()
+    //handleQuitar()
     setAdded(false)
   }
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image={image}
+    <Card className="mt-6 w-96">
+      <CardHeader color="blue-gray" className="relative h-56">
+        <img
+          src={image}
           alt={title}
         />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {title}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {price}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {description}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
+      </CardHeader>
+      <CardBody>
+        <Typography variant="h5" color="blue-gray" className="mb-2">
+          {title}
+        </Typography>
+        <Typography variant="h6" color="blue-gray" className="mb-2">
+          {price}
+        </Typography>
+        <Typography>
+          {description}
+        </Typography>
+      </CardBody>
+      <CardFooter className="pt-0">
         {added
-          ? <Button variant="contained" onClick={removeProduct} color="secondary">Quitar</Button>
-          : <Button variant="contained" onClick={addProduct} color="primary">Agregar</Button>
+          ? <Button onClick={removeProduct} color="amber" >Quitar</Button>
+          : <Button onClick={addProduct} color="blue">Agregar</Button>
         }
-      </CardActions>
+      </CardFooter>
     </Card>
+
   )
 }

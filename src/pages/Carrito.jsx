@@ -1,15 +1,6 @@
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { Button, IconButton, Typography } from '@mui/material';
 import { useContext } from 'react';
 import { CarritoContext } from '../context/CarritoContext';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { AddCircleOutline, RemoveCircleOutline } from '@mui/icons-material';
+import { Card, Typography, Button, IconButton } from "@material-tailwind/react";
 
 export const Carrito = () => {
 
@@ -21,55 +12,89 @@ export const Carrito = () => {
 
   return (
     <>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Producto</TableCell>
-              <TableCell align="right">Precio</TableCell>
-              <TableCell align="right">Cantidad</TableCell>
-              <TableCell align="right">Eliminar</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {listaCompras.map((producto) => (
-              <TableRow
-                key={producto.id}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {producto.title}
-                </TableCell>
-                <TableCell align="right">{producto.price}</TableCell>
-                <TableCell align="right">
-                  <IconButton aria-label="delete" onClick={() => disminuirCantidad(producto.id)}><RemoveCircleOutline /></IconButton>
-                  {producto.cantidad}
-                  <IconButton variant="contained" onClick={() => aumentarCantidad(producto.id)}><AddCircleOutline /></IconButton>
-                </TableCell>
-                <TableCell align="right">
-                  <IconButton
-                    aria-label="delete"
-                    onClick={() => eliminarCompra(producto.id)}>
-                    <DeleteIcon />
-                  </IconButton>
-                </TableCell>
-              </TableRow>
-            ))}
-            <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-              <TableCell component="th">
-                <Typography gutterBottom variant="subtitle1" component="div">
-                  Total
+
+      <Card className="h-full w-full">
+        <table className="w-full min-w-max table-auto text-left">
+          <thead>
+            <tr>
+              <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
+                <Typography variant="small" color="blue-gray" className="font-normal leading-none opacity-70">
+                  Producto
                 </Typography>
-              </TableCell>
-              <TableCell align="right">${calcTotal()}</TableCell>
-              <TableCell align="right"></TableCell>
-              <TableCell align="right"></TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <div>
-        <Button variant="contained" disabled={listaCompras.length<1} color="primary">Comprar</Button>
+              </th>
+              <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
+                <Typography variant="small" color="blue-gray" className="font-normal leading-none opacity-70">
+                  Precio
+                </Typography>
+              </th>
+              <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
+                <Typography variant="small" color="blue-gray" className="font-normal leading-none opacity-70">
+                  Cantidad
+                </Typography>
+              </th>
+              <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
+                <Typography variant="small" color="blue-gray" className="font-normal leading-none opacity-70">
+                  Eliminar
+                </Typography>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {listaCompras.map((producto) => (
+              <tr
+                key={producto.id}
+              >
+                <td className="p-4 border-b border-blue-gray-50">
+                  <Typography variant="small" color="blue-gray" className="font-normal">
+                    {producto.title}
+                  </Typography>
+                </td>
+                <td className="p-4 border-b border-blue-gray-50">
+                  <Typography variant="small" color="blue-gray" className="font-normal">
+                    {producto.price}
+                  </Typography>
+                </td>
+                <td className="p-4 border-b border-blue-gray-50">
+                  <IconButton variant="text" onClick={() => disminuirCantidad(producto.id)}><i class="fa-solid fa-minus"></i></IconButton>
+                  {producto.cantidad}
+                  <IconButton variant="text" onClick={() => aumentarCantidad(producto.id)}><i class="fa-solid fa-plus"></i></IconButton>
+                </td>
+                <td className="p-4 border-b border-blue-gray-50">
+                  <IconButton
+                    variant="text"
+                    onClick={() => eliminarCompra(producto.id)}
+                  >
+                    A
+                  </IconButton>
+                </td>
+              </tr>
+            ))}
+              <tr key={'a1500'}>
+                <td className="p-4 border-b border-blue-gray-50">
+                  <Typography variant="small" color="blue-gray" className="font-bold">
+                    Total
+                  </Typography>
+                </td>
+                <td className="p-4 border-b border-blue-gray-50">
+                  <Typography variant="small" color="blue-gray" className="font-normal">
+                    ${calcTotal()}
+                  </Typography>
+                </td>
+                <td className="p-4 border-b border-blue-gray-50">
+                  <Typography variant="small" color="blue-gray" className="font-normal">
+                  </Typography>
+                </td>
+                <td className="p-4 border-b border-blue-gray-50">
+                  <Typography variant="small" color="blue-gray" className="font-normal">
+                  </Typography>
+                </td>
+              </tr>
+          </tbody>
+        </table>
+      </Card>
+
+      <div className='py-5 float-right'>
+        <Button variant="contained" disabled={listaCompras.length < 1} color="primary">Comprar</Button>
       </div>
     </>
   )
