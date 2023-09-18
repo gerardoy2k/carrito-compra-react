@@ -24,7 +24,7 @@ export const Compras = () => {
 				{productos.map(producto => (
 					<ProductCard
 						key={producto.id}
-						image={producto.image}
+						image={producto.images[0]}
 						title={producto.title}
 						description={producto.description}
 						price={producto.price}
