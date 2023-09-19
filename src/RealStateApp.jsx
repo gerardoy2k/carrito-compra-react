@@ -7,10 +7,11 @@ import { NextUIProvider } from "@nextui-org/react";
 import { InmueblesProvider } from "./context/InmueblesProvider"
 import { ProductosProvider } from "./context/ProductosProvider"
 import { PropertyList } from "./pages/PropertyList"
-import { ButtonsBar } from "./components/ButtonsBar"
+import { HelpBar } from "./components/HelpBar"
 import { Home } from "./pages/Home"
 import { Footer } from "./components/Footer"
 import { Register } from "./pages/Register"
+import { Post } from "./pages/Post"
 
 export const RealStateApp = () => {
     return (
@@ -19,13 +20,14 @@ export const RealStateApp = () => {
                 <CarritoProvider>
                     <NextUIProvider>
                         <NavbarApp />
-                        <ButtonsBar />
+                        <HelpBar />
                         <div className="container max-w-full px-10 bg-slate-950">
                             <Routes>
                                 <Route path="/" element={<Home />} />
                                 <Route path="/compras" element={<Compras />} />
                                 <Route path="/inmuebles" element={<PropertyList />} />
                                 <Route path="/register" element={<Register />} />
+                                <Route path="/post" element={<Post />} />
                                 <Route path="/carrito" element={<Carrito />} />
                                 <Route path="/*" element={<Navigate to='/' />} />
                             </Routes>

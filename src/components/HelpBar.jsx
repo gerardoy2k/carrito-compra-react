@@ -1,7 +1,8 @@
 import { Button } from '@nextui-org/react'
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
-export const ButtonsBar = () => {
+export const HelpBar = () => {
     return (
         <div className='flex justify-end'>
             <Button
@@ -11,13 +12,9 @@ export const ButtonsBar = () => {
             >
                 Ayuda
             </Button>
-            <Button
-                variant="light"
-                color="primary"
-                className="capitalize h-5"
-            >
+            <NavLink to='/post' className="nav-link text-sm text-blue-600" aria-current="page">
                 Publica una propiedad
-            </Button>
+            </NavLink>
         </div>
     )
 }
