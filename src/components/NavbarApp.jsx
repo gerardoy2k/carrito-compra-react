@@ -1,13 +1,15 @@
 import { NavLink } from "react-router-dom";
-import { useContext } from "react";
-import { CarritoContext } from "../context/CarritoContext";
-import { Button, Image, Navbar, NavbarBrand, NavbarContent, NavbarItem, useDisclosure } from "@nextui-org/react";
+import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Navbar, NavbarBrand, NavbarContent, NavbarItem, useDisclosure } from "@nextui-org/react";
 import { Login } from "./Login";
-import logo from '../assets/images/logo.png'
+import Logo from '../assets/images/Logo'
+import Heart from "../assets/images/Heart";
+import Bell from "../assets/images/Bell";
+import DefaultAvatar from "../assets/images/DefaultAvatar";
+import Run from "../assets/images/Run";
+import Person from "../assets/images/Person";
+import ExpandMore from "../assets/images/ExpandMore";
 
 export const NavbarApp = () => {
-
-  const { listaCompras } = useContext(CarritoContext)
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -17,36 +19,93 @@ export const NavbarApp = () => {
 
   return (
     <>
-      <Navbar shouldHideOnScroll className="bg-black text-slate-50">
+      <Navbar shouldHideOnScroll className=""
+        classNames={{
+          item: [
+            "flex",
+            "relative",
+            "h-full",
+            "items-center",
+            "text-cyan-950",
+            "text-xl",
+            "font-['Rosa Sans']",
+            "data-[active=true]:text-red-500",
+          ],
+        }}
+      >
         <NavbarBrand>
           <NavLink to='/' className="nav-link active" aria-current="page">
-            <Image
-              isZoomed
-              width={60}
-              alt="Logo"
-              src={logo}
-            />
+            <Logo />
           </NavLink>
         </NavbarBrand>
-        <NavbarContent className="hidden sm:flex gap-6" justify="left">
+        <NavbarContent className="hidden sm:flex gap-6" justify="end">
           <NavbarItem isActive>
-            <NavLink to='/compras' className="nav-link" aria-current="page">
-              Comprass
+            <NavLink to='/compras' aria-current="page">
+              Inicio
             </NavLink>
           </NavbarItem>
-          <NavbarItem isActive>
-            <NavLink to='/inmuebles' className="nav-link active" aria-current="page">
-              Inmuebles
+          <NavbarItem>
+            <NavLink to='/inmuebles' aria-current="page">
+              TasadoOnline
             </NavLink>
           </NavbarItem>
-        </NavbarContent>
-        <NavbarContent justify="end">
-          <NavbarItem className="lg:flex">
-            <NavLink to='/register' className="nav-link text-sm font-bold text-blue-600" aria-current="page">
-              Registrarse
+          <NavbarItem>
+            <NavLink to='/inmuebles' aria-current="page">
+              Mi gestor
             </NavLink>
           </NavbarItem>
-          <NavbarItem className="lg:flex">
+          <NavbarItem>
+            <NavLink to='/register' aria-current="page">
+              <Heart />
+            </NavLink>
+          </NavbarItem>
+          <NavbarItem>
+            <NavLink to='/register' aria-current="page">
+              <Bell />
+            </NavLink>
+          </NavbarItem>
+
+          <Dropdown>
+            <NavbarItem>
+              <DropdownTrigger className="bg-transparent">
+                <Button>
+                  <DefaultAvatar />
+                  <p className="text-xl">Username</p>
+                  <div className="ml-[-10px]">
+                    <ExpandMore  />
+                  </div>
+                </Button>
+              </DropdownTrigger>
+            </NavbarItem>
+            <DropdownMenu
+              aria-label="Cuenta"
+              className="w-[180px]"
+              itemClasses={{
+                base: "gap-3 text-cyan-950",
+              }}
+            >
+              <DropdownItem
+                key="account"
+                startContent={<Person />}
+              >
+                Mi cuenta
+              </DropdownItem>
+              <DropdownItem
+                key="logout"
+                startContent={<Run />}
+              >
+                Cerrar sesión
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+          {/* <NavbarItem>
+            <NavLink to='/register' className="flex items-center" aria-current="page">
+              <DefaultAvatar />
+              <p className="ml-1">Username</p>
+
+            </NavLink>
+          </NavbarItem> */}
+          {/* <NavbarItem className="lg:flex">
             <Button
               variant="flat"
               color="warning"
@@ -55,12 +114,7 @@ export const NavbarApp = () => {
             >
               Iniciar sesión
             </Button>
-          </NavbarItem>
-          <NavbarItem className="lg:flex">
-            <NavLink to='/carrito'>
-              <i className="fa-solid fa-cart-shopping"></i>
-            </NavLink>
-          </NavbarItem>
+          </NavbarItem> */}
         </NavbarContent>
       </Navbar>
       <Login isOpen={isOpen} onClose={onClose} />

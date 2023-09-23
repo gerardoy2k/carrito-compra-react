@@ -5,7 +5,7 @@ import logo from '../assets/images/logo.png'
 
 export const Footer = () => {
     return (
-        <div className='bg-slate-500 h-40 mt-4 p-5 grid grid-cols-3'>
+        <div className='h-40 mt-4 p-5 grid grid-cols-3'>
             <div className='ml-7'>
                 <NavLink to='/' className="nav-link active" aria-current="page">
                     <Image

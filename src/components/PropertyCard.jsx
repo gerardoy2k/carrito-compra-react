@@ -12,7 +12,7 @@ export const PropertyCard = ({ image, title, description, price }) => {
     <Card
       isFooterBlurred
       radius="sm"
-      className="border-none bg-slate-300"
+      className="border-none"
     >
       <div className="px-2 flex justify-around">
         <div className="w-5/12 pr-2 flex items-center justify-center">

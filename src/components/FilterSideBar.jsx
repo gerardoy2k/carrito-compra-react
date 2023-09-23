@@ -11,8 +11,8 @@ export const FilterSideBar = () => {
     const handleSideBar = () => { setSideBarOpened(!sideBarOpened) }
 
     return (
-        <div className="bg-slate-400">
-            <div className="w-100 flex justify-between align-middle bg-slate-500">
+        <div className="">
+            <div className="w-100 flex justify-between align-middle ">
                 <div className='w-full flex justify-center align-middle pt-1'>
                     <img src={filter} onClick={handleSideBar} className='h-6 w-6 mt-1' />
                     {sideBarOpened ?

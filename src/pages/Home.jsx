@@ -3,12 +3,13 @@ import { CarouselWeb } from '../components/CarouselWeb'
 import { FilterHeader } from '../components/FilterHeader'
 import { CarouselOutstand } from '../components/CarouselOutstand'
 import { CityOptions } from '../components/CityOptions'
+import { MainImage } from '../components/MainImage'
 
 export const Home = () => {
     return (
         <>
             <div className="">
-                <CarouselWeb />
+                <MainImage />
                 <FilterHeader />
                 <CarouselOutstand name="Propiedades Destacadas"/>
                 <CarouselOutstand name="Corredores Destacadas" />

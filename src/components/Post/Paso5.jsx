@@ -4,7 +4,6 @@ import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Inline from "yet-another-react-lightbox/plugins/inline";
 import bedroom from '../../assets/images/bedroom.png'
-import priceTag from '../../assets/images/price-tag.png'
 import ruler from '../../assets/images/ruler.png'
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import "yet-another-react-lightbox/styles.css";

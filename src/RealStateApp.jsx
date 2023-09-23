@@ -12,16 +12,20 @@ import { Home } from "./pages/Home"
 import { Footer } from "./components/Footer"
 import { Register } from "./pages/Register"
 import { Post } from "./pages/Post"
+import { useState } from "react"
 
 export const RealStateApp = () => {
+    
+    const [isDark, setIsDark] = useState(false);
+
     return (
         <InmueblesProvider>
             <ProductosProvider>
                 <CarritoProvider>
                     <NextUIProvider>
-                        <NavbarApp />
-                        <HelpBar />
-                        <div className="container max-w-full px-10 bg-slate-950">
+                        <NavbarApp className={`${isDark?'dark':'light'} text-foreground bg-background`} />
+                        <HelpBar className={`${isDark?'dark':'light'} text-foreground bg-background`}/>
+                        <div className={`${isDark?'dark':'light'} text-foreground bg-background container max-w-full px-10`}>
                             <Routes>
                                 <Route path="/" element={<Home />} />
                                 <Route path="/compras" element={<Compras />} />

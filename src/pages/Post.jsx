@@ -32,7 +32,7 @@ export const Post = () => {
 
     return (
         <>
-            <div className='grid place-items-center my-10 py-3 bg-slate-400'>
+            <div className='grid place-items-center my-10 py-3 border'>
                 <div className='my-2 '>
                     <p className=''>{screens[screen].description}</p>
                 </div>
