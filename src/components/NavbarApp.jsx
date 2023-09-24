@@ -18,9 +18,13 @@ export const NavbarApp = () => {
   }
 
   return (
-    <>
-      <Navbar shouldHideOnScroll className=""
+    <section>
+      <Navbar shouldHideOnScroll className="w-full"
         classNames={{
+          wrapper: [
+            "max-w-[1920px]",
+            "px-0"
+          ],
           item: [
             "flex",
             "relative",
@@ -67,7 +71,7 @@ export const NavbarApp = () => {
 
           <Dropdown>
             <NavbarItem>
-              <DropdownTrigger className="bg-transparent">
+              <DropdownTrigger className="bg-transparent px-0">
                 <Button>
                   <DefaultAvatar />
                   <p className="text-xl">Username</p>
@@ -118,6 +122,6 @@ export const NavbarApp = () => {
         </NavbarContent>
       </Navbar>
       <Login isOpen={isOpen} onClose={onClose} />
-    </>
+    </section>
   )
 }

@@ -32,7 +32,7 @@ export const MainImage = () => {
           }}
           inline={{
             style: {
-              aspectRatio: "21 / 6",
+              aspectRatio: "18 / 5",
             },
           }}
         />

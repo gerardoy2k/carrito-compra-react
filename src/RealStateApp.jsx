@@ -15,7 +15,7 @@ import { Post } from "./pages/Post"
 import { useState } from "react"
 
 export const RealStateApp = () => {
-    
+
     const [isDark, setIsDark] = useState(false);
 
     return (
@@ -23,9 +23,10 @@ export const RealStateApp = () => {
             <ProductosProvider>
                 <CarritoProvider>
                     <NextUIProvider>
-                        <NavbarApp className={`${isDark?'dark':'light'} text-foreground bg-background`} />
-                        <HelpBar className={`${isDark?'dark':'light'} text-foreground bg-background`}/>
-                        <div className={`${isDark?'dark':'light'} text-foreground bg-background container max-w-full px-10`}>
+                        <div className={`${isDark ? 'dark' : 'light'} text-foreground bg-background container mx-auto`}>
+                            <NavbarApp className={`${isDark ? 'dark' : 'light'} text-foreground bg-background`} />
+                            <HelpBar className={`${isDark ? 'dark' : 'light'} text-foreground bg-background`} />
+
                             <Routes>
                                 <Route path="/" element={<Home />} />
                                 <Route path="/compras" element={<Compras />} />
@@ -35,8 +36,8 @@ export const RealStateApp = () => {
                                 <Route path="/carrito" element={<Carrito />} />
                                 <Route path="/*" element={<Navigate to='/' />} />
                             </Routes>
+                            <Footer />
                         </div>
-                        <Footer />
                     </NextUIProvider>
                 </CarritoProvider>
             </ProductosProvider>
