@@ -1,20 +1,22 @@
 import React from 'react'
-import { CarouselWeb } from '../components/CarouselWeb'
 import { FilterHeader } from '../components/FilterHeader'
-import { CarouselOutstand } from '../components/CarouselOutstand'
+import { CarouselHighlights } from '../components/CarouselHighlights'
 import { CityOptions } from '../components/CityOptions'
 import { MainImage } from '../components/MainImage'
+import { Ads } from '../components/Ads'
+import { MessageCenter } from '../components/MessageCenter'
 
 export const Home = () => {
     return (
         <>
-            <div className="">
-                <MainImage />
-                <FilterHeader />
-                <CarouselOutstand name="Propiedades Destacadas"/>
-                <CarouselOutstand name="Corredores Destacadas" />
-                <CityOptions />
-            </div>
+            <MainImage />
+            <FilterHeader />
+            <Ads />
+            <MessageCenter message="Explora y encuentra tu nuevo hogar" />
+            <CarouselHighlights name="Propiedades Destacadas" />
+            <CarouselHighlights name="Corredores Destacados" />
+            <MessageCenter message="¿Dónde quieres vivir?" />
+            <CityOptions />
         </>
     )
 }

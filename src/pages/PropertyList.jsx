@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { PropertyCard } from "../components/PropertyCard"
 import { InmueblesContext } from "../context/InmueblesContext"
 import { FilterSideBar } from "../components/FilterSideBar"
-import { CarouselOutstand } from "../components/CarouselOutstand"
+import { CarouselHighlights } from "../components/CarouselHighlights"
 import { FilterHeader } from "../components/FilterHeader"
 
 export const PropertyList = () => {
@@ -16,7 +16,7 @@ export const PropertyList = () => {
 				<FilterSideBar />
 				<div className="">
 					<div className="px-2 flex flex-col justify-center">
-						<CarouselOutstand></CarouselOutstand>
+						<CarouselHighlights></CarouselHighlights>
 					</div>
 					<div className="grid grid-flow-row-dense gap-4 py-4 grid-cols-[minmax(580px,_1fr)] grid-rows-max ml-2">
 						{inmuebles.map(inmueble => (
